@@ -66,9 +66,21 @@ public class DetailActivity extends AppCompatActivity {
         TextView ingredientsTv = findViewById(R.id.ingredients_tv);
         TextView descriptionTv = findViewById(R.id.description_tv);
         originTv.setText(sandwich.getPlaceOfOrigin());
-        //akaTv.setText(sandwich.getAlsoKnownAs().toString());
-        ingredientsTv.setText(sandwich.getIngredients().toString());
         descriptionTv.setText(sandwich.getDescription());
+
+        String concatenated = "";
+        for (int i=0; i<sandwich.getAlsoKnownAs().size(); i++) {
+            concatenated += sandwich.getAlsoKnownAs().get(i);
+            if (i<sandwich.getAlsoKnownAs().size()-1) concatenated+=", ";
+        }
+        akaTv.setText(concatenated);
+
+        concatenated = "";
+        for (int i=0; i<sandwich.getIngredients().size(); i++) {
+            concatenated += sandwich.getIngredients().get(i);
+            if (i<sandwich.getIngredients().size()-1) concatenated+=", ";
+        }
+        ingredientsTv.setText(concatenated);
 
     }
 }

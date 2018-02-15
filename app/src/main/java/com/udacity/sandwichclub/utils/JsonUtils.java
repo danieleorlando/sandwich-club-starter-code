@@ -22,19 +22,19 @@ public class JsonUtils {
             sandwich.setDescription(jsonObject.getString("description"));
             sandwich.setImage(jsonObject.getString("image"));
 
-            List<String> list = new ArrayList<>();
+            List<String> listAKA = new ArrayList<>();
             JSONArray jsonArrayAKA = jsonObject.getJSONObject("name").getJSONArray("alsoKnownAs");
             for (int i=0; i<jsonArrayAKA.length(); i++) {
-                list.add(jsonArrayAKA.get(i).toString());
+                listAKA.add(jsonArrayAKA.get(i).toString());
             }
-            sandwich.setAlsoKnownAs(list);
+            sandwich.setAlsoKnownAs(listAKA);
 
-            list.clear();
+            List<String> listIngredients = new ArrayList<>();
             JSONArray jsonArrayIngredients = jsonObject.getJSONArray("ingredients");
             for (int i=0; i<jsonArrayIngredients.length(); i++) {
-                list.add(jsonArrayIngredients.get(i).toString());
+                listIngredients.add(jsonArrayIngredients.get(i).toString());
             }
-            sandwich.setIngredients(list);
+            sandwich.setIngredients(listIngredients);
 
             return sandwich;
 
